@@ -1,0 +1,27 @@
+version: "3.1"
+services:
+  db:
+    image: postgres
+    restart: always
+    env_file:
+      - .env
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  docassemble:
+    image: jhpyle/docassemble
+    volumes:
+      - ./backup:/usr/share/docassemble/backup
+#    container_name: docassemble-dev
+    env_file:
+      - .env
+    restart: unless-stopped
+    stop_grace_period: 6m
+    ports:
+      - "80:80"
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
