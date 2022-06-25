@@ -1,9 +1,17 @@
 ---
+mandatory: True
+question: |
+  Welcome ${ name }
+subquestion: |
+  We're glad to have you
+---
 question:
   What is your name?
 fields: 
   - Your name: name
+button:
+
 ---
 question:
   What's today's date
----
+
